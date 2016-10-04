@@ -5,7 +5,7 @@ import styles from './styles';
 
 export default class Container extends Component {
   static propTypes = {
-    show: PropTypes.func.isRequired,
+    show: PropTypes.bool.isRequired,
     clear: PropTypes.func.isRequired,
     close: PropTypes.func.isRequired,
     logs: PropTypes.array.isRequired,
@@ -15,13 +15,41 @@ export default class Container extends Component {
     super(props);
   }
 
+  renderLevel(level) {
+    const color = {
+      'info': '#0074D9',
+      'warn': '#FF851B',
+      'error': '#FF4136',
+    }[level] || '#AAAAAA';
+
+    return <Text style={[styles.dot, { color }]}>•</Text>;
+  }
+
+  renderMessage(message) {
+    let msg = message;
+    if (typeof message === 'object') {
+      msg = '[object]';
+    }
+    return <Text style={styles.msg}>{msg}</Text>;
+  }
+
   renderItem(item) {
-    const level = item.level;
-    const date = moment(item.date).format('mm:ss');
-    const msg = typeof item.msg === 'object' ? JSON.stringify(item.msg) : item.msg;
+    // TODO: ignore the user's custom style for this version.
+    const existCustomStyle = item.messages
+    && item.messages[0]
+    && typeof item.messages[0] === 'string'
+    && item.messages[0].indexOf('%c') === 0;
+    if (existCustomStyle) {
+      item.messages = [
+        item.messages[0].substring(2),
+        item.messages.slice(2),
+      ];
+    }
+
     return (
-      <View>
-        <Text>{date} [{level}] {msg}</Text>
+      <View style={styles.item}>
+        {this.renderLevel(item.level)}
+        {item.messages.map(this.renderMessage.bind(this))}
       </View>
     );
   }
@@ -46,7 +74,7 @@ export default class Container extends Component {
             </TouchableOpacity>
           </View>
           <ScrollView>
-            {logs.map(this.renderItem)}
+            {logs.map(this.renderItem.bind(this))}
           </ScrollView>
         </View>
       </Modal>

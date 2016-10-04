@@ -1,14 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { View } from 'react-native';
 import Mini from './Mini';
 import Modal from './Modal';
 
 const LOGGER = '__react_native_logger_client__';
+
+// init logger list.
 global[LOGGER] = [];
 
+function add(options, level) {
+  global[LOGGER].push({
+    ...options,
+    level,
+  });
+}
+
+const logger = {
+  log: (options) => add(options),
+  info: (options) => add(options, 'info'),
+  warn: (options) => add(options, 'warn'),
+  error: (options) => add(options, 'error'),
+};
+
+function integrate(console) {
+  const _console = { ...console };
+  ['log', 'info', 'warn', 'error'].map((func) => {
+    console[func] = (...params) => {
+      _console[func].apply(undefined, params);
+      logger[func]({ messages: params });
+    };
+  });
+}
+
 export default class Container extends Component {
+  static propTypes = {
+    console: PropTypes.object.isRequired,
+  }
+
   constructor(props) {
     super(props);
+    integrate(props.console);
     this.state = {
       show: false,
     };
@@ -43,8 +74,4 @@ export default class Container extends Component {
   clear() {
     global[LOGGER] = [];
   }
-}
-
-export function log(options) {
-  global[LOGGER].push(options);
 }
