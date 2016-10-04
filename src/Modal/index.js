@@ -42,7 +42,7 @@ export default class Container extends Component {
     if (existCustomStyle) {
       item.messages = [
         item.messages[0].substring(2),
-        item.messages.slice(2),
+        ...item.messages.slice(2),
       ];
     }
 
