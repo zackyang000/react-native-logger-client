@@ -1,6 +1,6 @@
 {
   "name": "react-native-logger-client",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "author": "Zack Yang <zackyang@outlook.com>",
   "description": "A Logger run on the device.",
@@ -23,8 +23,7 @@
   ],
   "peerDependencies": {
     "react": ">=0.14.8",
-    "react-native": ">=0.23.1",
-    "moment": "*"
+    "react-native": ">=0.23.1"
   },
   "devDependencies": {
     "babel": "^5.8.21",
