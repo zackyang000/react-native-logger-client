@@ -29,7 +29,7 @@ export default StyleSheet.create({
   },
   msg: {
     flex: 1,
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
   },
 });
 
