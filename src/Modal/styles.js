@@ -20,21 +20,5 @@ export default StyleSheet.create({
     padding: 3,
     color: '#fff',
   },
-  item: {
-    flexDirection: 'row',
-  },
-  dot: {
-    borderRadius: 5,
-    marginRight: 5,
-  },
-  messages: {
-    flex: 1,
-  },
-  message: {
-    flexWrap: 'wrap',
-  },
-  object: {
-    paddingLeft: 20,
-  },
 });
 

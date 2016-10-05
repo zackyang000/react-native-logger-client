@@ -1,33 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import { View } from 'react-native';
-import Mini from './Mini';
-import Modal from './Modal';
+import Main from './Main';
+import Log from './Log';
 
 const LOGGER = '__react_native_logger_client__';
 
-// init logger list.
-global[LOGGER] = [];
-
-function add(options, level) {
-  global[LOGGER].push({
-    ...options,
-    level,
-  });
+function init() {
+  global[LOGGER] = [];
 }
 
-const logger = {
-  log: (options) => add(options),
-  info: (options) => add(options, 'info'),
-  warn: (options) => add(options, 'warn'),
-  error: (options) => add(options, 'error'),
-};
+function addLog(messages, level) {
+  global[LOGGER].push(<Log level={level} messages={messages} />);
+}
 
 function integrate(console) {
   const _console = { ...console };
-  ['log', 'info', 'warn', 'error'].map((func) => {
-    console[func] = (...params) => {
-      _console[func].apply(undefined, params);
-      logger[func]({ messages: params });
+  ['log', 'info', 'warn', 'error'].map((type) => {
+    console[type] = (...messages) => {
+      _console[type].apply(undefined, messages);
+      addLog.call(undefined, messages, type);
     };
   });
 }
@@ -40,38 +31,12 @@ export default class Container extends Component {
   constructor(props) {
     super(props);
     integrate(props.console);
-    this.state = {
-      show: false,
-    };
-  }
-
-  componentDidMount() {
-    this.open();
+    init();
   }
 
   render() {
     return (
-      <View>
-        <Mini open={this.open.bind(this)} />
-        <Modal
-          close={this.close.bind(this)}
-          clear={this.clear.bind(this)}
-          show={this.state.show}
-          logs={global[LOGGER]}
-        />
-      </View>
+      <Main data={global[LOGGER]} clear={init} />
     );
-  }
-
-  open() {
-    this.setState({ show: true });
-  }
-
-  close() {
-    this.setState({ show: false });
-  }
-
-  clear() {
-    global[LOGGER] = [];
   }
 }
