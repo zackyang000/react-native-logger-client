@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { View, ScrollView, TouchableOpacity, Text, Modal } from 'react-native';
-import moment from 'moment';
 import styles from './styles';
 
 export default class Container extends Component {
