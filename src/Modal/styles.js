@@ -31,7 +31,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   message: {
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
   },
 });
 
