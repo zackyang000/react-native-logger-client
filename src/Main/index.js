@@ -16,11 +16,6 @@ export default class Container extends Component {
     };
   }
 
-  componentDidMount() {
-    // TODO: just for debugger
-    this.open();
-  }
-
   render() {
     return (
       <View>
