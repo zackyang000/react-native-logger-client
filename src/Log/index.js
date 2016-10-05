@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { View, ScrollView, TouchableOpacity, Text, Modal } from 'react-native';
 import styles from './styles';
+import LogContent from '../LogContent';
 
 export default class Container extends Component {
   static propTypes = {
@@ -28,37 +29,6 @@ export default class Container extends Component {
     return <Text style={[styles.dot, { color }]}>•</Text>;
   }
 
-  renderObject(message, key, id) {
-    return (
-      <View>
-        {typeof message === 'object' &&
-          <TouchableOpacity onPress={this.toggle.bind(this, id)}>
-            <Text>
-              ▶
-              {key}
-              {key ? ': ' : ''}
-              Ojbect
-            </Text>
-          </TouchableOpacity>
-        }
-        {typeof message !== 'object' &&
-          <Text>{message}</Text>
-        }
-        {typeof message === 'object' && this.state[id] &&
-          <View style={styles.object}>
-            {Object.keys(message).map((child) =>
-              this.renderObject(message[child], child, id + child)
-            )}
-          </View>
-        }
-      </View>
-    );
-  }
-
-  renderMessage(message) {
-    return this.renderObject(message);
-  }
-
   render() {
     let { level, messages } = this.props;
 
@@ -80,13 +50,9 @@ export default class Container extends Component {
       <View style={styles.container}>
         {this.renderLevel(level)}
         <View style={styles.messages}>
-          {messages.map(this.renderMessage.bind(this))}
+          {messages.map((message) => <LogContent message={message} />)}
         </View>
       </View>
     );
-  }
-
-  toggle(id) {
-    this.setState({ [id]: !this.state[id] });
   }
 }

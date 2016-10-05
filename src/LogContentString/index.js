@@ -4,22 +4,17 @@ import styles from './styles';
 
 export default class Container extends Component {
   static propTypes = {
+    name: PropTypes.string.isRequired,
+    value: PropTypes.any.isRequired,
   }
 
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   render() {
-    const { show } = this.props;
+    const { name, value } = this.props;
 
-    return (
-      <View style={styles.container}>
-      </View>
-    );
+    return <Text>{name}: {value.toString()}</Text>;
   }
 }
-
-
-

@@ -4,19 +4,26 @@ import styles from './styles';
 
 export default class Container extends Component {
   static propTypes = {
+    name: PropTypes.any,
+    toggle: PropTypes.func.isRequired,
+    isShow: PropTypes.bool,
   }
 
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   render() {
-    const { show } = this.props;
+    const { toggle, name } = this.props;
+
+    const icon = this.props.isShow ? '▼' : '▶';
 
     return (
-      <View style={styles.container}>
-      </View>
+      <TouchableOpacity onPress={toggle}>
+        <Text>
+          {icon} {name}{name ? ': ' : ''} Ojbect
+        </Text>
+      </TouchableOpacity>
     );
   }
 }

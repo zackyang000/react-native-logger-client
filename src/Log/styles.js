@@ -14,8 +14,5 @@ export default StyleSheet.create({
   message: {
     flexWrap: 'wrap',
   },
-  object: {
-    paddingLeft: 20,
-  },
 });
 
