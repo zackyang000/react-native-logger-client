@@ -27,8 +27,10 @@ export default StyleSheet.create({
     borderRadius: 5,
     marginRight: 5,
   },
-  msg: {
+  messages: {
     flex: 1,
+  },
+  message: {
     flexWrap: "wrap",
   },
 });

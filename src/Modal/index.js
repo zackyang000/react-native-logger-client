@@ -30,7 +30,7 @@ export default class Container extends Component {
     if (typeof message === 'object') {
       msg = '[object]';
     }
-    return <Text style={styles.msg}>{msg}</Text>;
+    return <Text style={styles.message}>{msg}</Text>;
   }
 
   renderItem(item) {
@@ -41,7 +41,9 @@ export default class Container extends Component {
     && item.messages[0].indexOf('%c') === 0;
     if (existCustomStyle) {
       item.messages = [
-        item.messages[0].substring(2),
+        item.messages[0].indexOf('%c ') === 0
+        ? item.messages[0].substring(3)
+        : item.messages[0].substring(2),
         ...item.messages.slice(2),
       ];
     }
@@ -49,7 +51,9 @@ export default class Container extends Component {
     return (
       <View style={styles.item}>
         {this.renderLevel(item.level)}
-        {item.messages.map(this.renderMessage.bind(this))}
+        <View style={styles.messages}>
+          {item.messages.map(this.renderMessage.bind(this))}
+        </View>
       </View>
     );
   }
