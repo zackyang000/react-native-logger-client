@@ -28,10 +28,10 @@ It will automatically integrate with the console, when you use such as `console.
 The following features are currently integrated.
 
 * [x] Console
-* * [x] log
-* * [x] info
-* * [x] warn
-* * [x] error
+  * [x] log
+  * [x] info
+  * [x] warn
+  * [x] error
 
 ## Installation
 
