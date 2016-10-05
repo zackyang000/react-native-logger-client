@@ -12,6 +12,7 @@ export default class Container extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {};
   }
 
   renderLevel(level) {
@@ -24,12 +25,35 @@ export default class Container extends Component {
     return <Text style={[styles.dot, { color }]}>•</Text>;
   }
 
+  renderObject(obj, key, id) {
+    return (
+      <View>
+        {typeof obj === 'object' &&
+          <TouchableOpacity onPress={this.toggle.bind(this, id)}>
+            <Text>
+              ▶
+              {key}
+              {key ? ': ' : ''}
+              Ojbect
+            </Text>
+          </TouchableOpacity>
+        }
+        {typeof obj !== 'object' &&
+          <Text>{obj}</Text>
+        }
+        {typeof obj === 'object' && this.state[id] &&
+          <View style={styles.object}>
+            {Object.keys(obj).map((child) =>
+              this.renderObject(obj[child], child, id + child)
+            )}
+          </View>
+        }
+    </View>
+    );
+  }
+
   renderMessage(message) {
-    let msg = message;
-    if (typeof message === 'object') {
-      msg = '[object]';
-    }
-    return <Text style={styles.message}>{msg}</Text>;
+    return this.renderObject(message);
   }
 
   renderItem(item) {
@@ -82,6 +106,10 @@ export default class Container extends Component {
         </View>
       </Modal>
     );
+  }
+
+  toggle(id) {
+    this.setState({ [id]: !this.state.id });
   }
 }
 
