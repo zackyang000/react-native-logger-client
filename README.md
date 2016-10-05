@@ -27,7 +27,7 @@ It will automatically integrate with the console, when you use such as `console.
 
 The following features are currently integrated.
 
-* [x] Console
+* Console
   * [x] log
   * [x] info
   * [x] warn
