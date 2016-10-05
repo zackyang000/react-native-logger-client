@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, ScrollView, TouchableOpacity, Text, Modal } from 'react-native';
-import styles from './styles';
+import {TouchableOpacity, Text } from 'react-native';
 
 export default class Container extends Component {
   static propTypes = {
@@ -27,6 +26,3 @@ export default class Container extends Component {
     );
   }
 }
-
-
-

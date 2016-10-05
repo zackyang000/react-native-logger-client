@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, ScrollView, TouchableOpacity, Text, Modal } from 'react-native';
+import { View, Text } from 'react-native';
 import styles from './styles';
 import LogContent from '../LogContent';
 
@@ -30,7 +30,8 @@ export default class Container extends Component {
   }
 
   render() {
-    let { level, messages } = this.props;
+    const { level } = this.props;
+    let { messages } = this.props;
 
     // TODO: ignore the user's custom style for this version.
     const existCustomStyle = messages
