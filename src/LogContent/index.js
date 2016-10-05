@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { View, ScrollView, TouchableOpacity, Text, Modal } from 'react-native';
 import styles from './styles';
 import LogContentObject from '../LogContentObject';
+import LogContentArray from '../LogContentArray';
 import LogContentString from '../LogContentString';
 
 export default class Container extends Component {
@@ -24,7 +25,10 @@ export default class Container extends Component {
   }
 
   renderMessageContent(message, name, id) {
-    if (typeof message === 'object') {
+    if (message instanceof Array) {
+      return <LogContentArray isShow={this.state[id]} toggle={this.toggle.bind(this, id)} name={name} />;
+    }
+    else if (typeof message === 'object') {
       return <LogContentObject isShow={this.state[id]} toggle={this.toggle.bind(this, id)} name={name} />;
     }
     return <LogContentString name={name} value={message} />;
