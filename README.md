@@ -41,7 +41,8 @@ npm install --save react-native-logger-client
 
 ## TODO
 * [ ] Mini window can be dragged
-* [ ] Mini window should be change when log something
-* [ ] Custom filter log by type
+* [ ] Mini window should be change color when log something
+* [ ] Limit maximum line number
+* [ ] Filter log by type
 * [ ] Show timestamps
 * [ ] Custom style output
