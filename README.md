@@ -10,6 +10,8 @@ A Logger that runs on the device is the same as the chrome console.
 
 ## Usage
 
+1. Integrate into the root component
+
 ```js
 render() {
   return (
@@ -20,6 +22,16 @@ render() {
     </View>
   );
 }
+```
+
+2. Use it anywhere
+
+```js
+console.log('Hello, Logs!');
+console.info('This is a message.');
+console.warn('user limit reached.');
+console.error('error: name is undefined.');
+console.log([{a:1, b:2, c:3}, {a:"foo", b:false, c:undefined}]);
 ```
 
 ## API
@@ -46,3 +58,4 @@ npm install --save react-native-logger-client
 * [ ] Filter log by type
 * [ ] Show timestamps
 * [ ] Custom style output
+* [ ] Run on server
