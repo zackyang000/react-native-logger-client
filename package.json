@@ -1,6 +1,6 @@
 {
   "name": "react-native-logger-client",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "lib/index.js",
   "author": "Zack Yang <zackyang@outlook.com>",
   "description": "A Logger run on the device.",
