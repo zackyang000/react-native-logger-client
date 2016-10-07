@@ -17,7 +17,7 @@ export default class Container extends Component {
 
   renderMessage(message, name, id) {
     return (
-      <View>
+      <View key={id}>
         {this.renderMessageContent(message, name, id)}
         {this.renderMessageChildren(message, id)}
       </View>

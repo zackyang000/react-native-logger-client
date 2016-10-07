@@ -51,7 +51,7 @@ export default class Container extends Component {
       <View style={styles.container}>
         {this.renderLevel(level)}
         <View style={styles.messages}>
-          {messages.map((message) => <LogContent message={message} />)}
+          {messages.map((message, i) => <LogContent key={i} message={message} />)}
         </View>
       </View>
     );

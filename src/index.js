@@ -9,7 +9,7 @@ function init() {
 }
 
 function addLog(messages, level) {
-  global[LOGGER].push(<Log level={level} messages={messages} />);
+  global[LOGGER].push(<Log key={global[LOGGER].length} level={level} messages={messages} />);
 }
 
 function integrate(console) {

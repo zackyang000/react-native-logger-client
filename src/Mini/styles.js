@@ -4,6 +4,7 @@ export default StyleSheet.create({
   miniView: {
     zIndex: 1,
     position: 'absolute',
+    width: 50,
     bottom: 0,
     left: 20,
     padding: 3,
