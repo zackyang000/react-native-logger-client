@@ -17,7 +17,7 @@ export default class Container extends Component {
 
   renderMessage(message, name, id) {
     return (
-      <View key={id}>
+      <View>
         {this.renderMessageContent(message, name, id)}
         {this.renderMessageChildren(message, id)}
       </View>
@@ -34,7 +34,15 @@ export default class Container extends Component {
   }
 
   renderMessageChildren(message, id) {
-    if (typeof message === 'object' && this.state[id]) {
+    if (message instanceof Array && this.state[id]) {
+      return (
+        <View style={styles.object}>
+          {message.map((child, i) =>
+            this.renderMessage(child, i, '' + id + i)
+          )}
+        </View>
+      );
+    } else if (typeof message === 'object' && this.state[id]) {
       return (
         <View style={styles.object}>
           {Object.keys(message).map((child) =>
