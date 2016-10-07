@@ -24,12 +24,12 @@ function integrate(console) {
 
 export default class Container extends Component {
   static propTypes = {
-    console: PropTypes.object.isRequired,
+    console: PropTypes.object,
   }
 
   constructor(props) {
     super(props);
-    integrate(props.console);
+    integrate(props.console || console);
     init();
   }
 
