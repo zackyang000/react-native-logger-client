@@ -35,7 +35,12 @@ export default class Container extends Component {
 
   render() {
     return (
-      <Main data={global[LOGGER]} clear={init} />
+      <Main data={global[LOGGER]} clear={this.clear.bind(this)} />
     );
+  }
+
+  clear() {
+    init();
+    this.forceUpdate();
   }
 }
