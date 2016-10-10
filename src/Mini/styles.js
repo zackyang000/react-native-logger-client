@@ -5,7 +5,7 @@ export default StyleSheet.create({
     zIndex: 1,
     position: 'absolute',
     width: 50,
-    bottom: 0,
+    bottom: 100,
     left: 20,
     padding: 3,
     paddingLeft: 5,
