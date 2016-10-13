@@ -34,6 +34,9 @@ console.error('error: name is undefined.');
 console.log([{a:1, b:2, c:3}, {a:"foo", b:false, c:undefined}]);
 ```
 
+<img src="https://github.com/TossShinHwa/react-native-logger-client/blob/master/img/example1.png?raw=true" width="300">
+<img src="https://github.com/TossShinHwa/react-native-logger-client/blob/master/img/example2.png?raw=true" width="300">
+
 ## API
 It will automatically integrate with the console, when you use such as `console.log`, it will be output to the device.
 
