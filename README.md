@@ -10,7 +10,7 @@ A Logger that runs on the device is the same as the chrome console.
 
 ## Usage
 
-1. Integrate into the root component
+1.Integrate into the root component
 
 ```js
 render() {
@@ -24,7 +24,7 @@ render() {
 }
 ```
 
-2. Use it anywhere
+2.Use it anywhere
 
 ```js
 console.log('Hello, Logs!');
@@ -38,6 +38,7 @@ console.log([{a:1, b:2, c:3}, {a:"foo", b:false, c:undefined}]);
 <img src="https://github.com/TossShinHwa/react-native-logger-client/blob/master/img/example2.png?raw=true" width="300">
 
 ## API
+
 It will automatically integrate with the console, when you use such as `console.log`, it will be output to the device.
 
 The following features are currently integrated.
